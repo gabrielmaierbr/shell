@@ -16,7 +16,7 @@ Singleton {
     property list<var> hourlyForecast
 
     readonly property string icon: cc ? Icons.getWeatherIcon(cc.weatherCode) : "cloud_alert"
-    readonly property string description: cc?.weatherDesc ?? qsTr("No weather")
+    readonly property string description: cc?.weatherDesc ?? qsTr("Sem clima")
     readonly property string temp: GlobalConfig.services.useFahrenheit ? `${cc?.tempF ?? 0}°F` : `${cc?.tempC ?? 0}°C`
     readonly property string feelsLike: GlobalConfig.services.useFahrenheit ? `${cc?.feelsLikeF ?? 0}°F` : `${cc?.feelsLikeC ?? 0}°C`
     readonly property int humidity: cc?.humidity ?? 0
@@ -176,34 +176,34 @@ Singleton {
 
     function getWeatherCondition(code: string): string {
         const conditions = {
-            "0": "Clear",
-            "1": "Clear",
-            "2": "Partly cloudy",
-            "3": "Overcast",
-            "45": "Fog",
-            "48": "Fog",
-            "51": "Drizzle",
-            "53": "Drizzle",
-            "55": "Drizzle",
-            "56": "Freezing drizzle",
-            "57": "Freezing drizzle",
-            "61": "Light rain",
-            "63": "Rain",
-            "65": "Heavy rain",
-            "66": "Light rain",
-            "67": "Heavy rain",
-            "71": "Light snow",
-            "73": "Snow",
-            "75": "Heavy snow",
-            "77": "Snow",
-            "80": "Light rain",
-            "81": "Rain",
-            "82": "Heavy rain",
-            "85": "Light snow showers",
-            "86": "Heavy snow showers",
-            "95": "Thunderstorm",
-            "96": "Thunderstorm with hail",
-            "99": "Thunderstorm with hail"
+            "0": "Limpo",
+            "1": "Limpo",
+            "2": "Parcialmente nublado",
+            "3": "Nublado",
+            "45": "Névoa",
+            "48": "Névoa",
+            "51": "Chuvisco",
+            "53": "Chuvisco",
+            "55": "Chuvisco",
+            "56": "Chuvisco congelante",
+            "57": "Chuvisco congelante",
+            "61": "Chuva leve",
+            "63": "Chuva",
+            "65": "Chuva pesada",
+            "66": "Chuva leve",
+            "67": "Chuva pesada",
+            "71": "Nevasca leve",
+            "73": "Neve",
+            "75": "Nevasca forte",
+            "77": "Neve",
+            "80": "Chuva leve",
+            "81": "Chuva",
+            "82": "Chuva forte",
+            "85": "Nevasca",
+            "86": "Nevasca forte",
+            "95": "Tempestade",
+            "96": "Tempestade com granizo",
+            "99": "Tempestade com granizo"
         };
         return conditions[code] || "Unknown";
     }
