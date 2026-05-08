@@ -100,19 +100,19 @@ Singleton {
 
     function getStreamName(stream: PwNode): string {
         if (!stream)
-            return qsTr("Unknown");
+            return qsTr("Desconhecido");
         // Try application name first, then description, then name
-        return stream.properties["application.name"] || stream.description || stream.name || qsTr("Unknown Application");
+        return stream.properties["application.name"] || stream.description || stream.name || qsTr("App desconhecido");
     }
 
     onSinkChanged: {
         if (!sink?.ready)
             return;
 
-        const newSinkName = sink.description || sink.name || qsTr("Unknown Device");
+        const newSinkName = sink.description || sink.name || qsTr("Dispositivo desconhecido");
 
         if (previousSinkName && previousSinkName !== newSinkName && GlobalConfig.utilities.toasts.audioOutputChanged)
-            Toaster.toast(qsTr("Audio output changed"), qsTr("Now using: %1").arg(newSinkName), "volume_up");
+            Toaster.toast(qsTr("Saída de Áudio alterada"), qsTr("Usando: %1").arg(newSinkName), "volume_up");
 
         previousSinkName = newSinkName;
     }
@@ -121,17 +121,17 @@ Singleton {
         if (!source?.ready)
             return;
 
-        const newSourceName = source.description || source.name || qsTr("Unknown Device");
+        const newSourceName = source.description || source.name || qsTr("Dispositivo desconhecido");
 
         if (previousSourceName && previousSourceName !== newSourceName && GlobalConfig.utilities.toasts.audioInputChanged)
-            Toaster.toast(qsTr("Audio input changed"), qsTr("Now using: %1").arg(newSourceName), "mic");
+            Toaster.toast(qsTr("Entrada de Áudio alterada"), qsTr("Usando: %1").arg(newSourceName), "mic");
 
         previousSourceName = newSourceName;
     }
 
     Component.onCompleted: {
-        previousSinkName = sink?.description || sink?.name || qsTr("Unknown Device");
-        previousSourceName = source?.description || source?.name || qsTr("Unknown Device");
+        previousSinkName = sink?.description || sink?.name || qsTr("Dispositivo desconhecido");
+        previousSourceName = source?.description || source?.name || qsTr("Dispositivo desconhecido");
     }
 
     Connections {
