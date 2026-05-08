@@ -33,7 +33,7 @@ Item {
         spacing: Tokens.spacing.normal
 
         StyledText {
-            text: qsTr("Output device")
+            text: qsTr("Dispositivo de Saída")
             font.weight: 500
         }
 
@@ -54,7 +54,7 @@ Item {
 
         StyledText {
             Layout.topMargin: Tokens.spacing.smaller
-            text: qsTr("Input device")
+            text: qsTr("Dispositivo de Entrada")
             font.weight: 500
         }
 
@@ -109,7 +109,7 @@ Item {
             inactiveColour: Colours.palette.m3primaryContainer
             inactiveOnColour: Colours.palette.m3onPrimaryContainer
             verticalPadding: Tokens.padding.small
-            text: qsTr("Open settings")
+            text: qsTr("Abrir configurações")
             icon: "settings"
 
             onClicked: root.popouts.detachRequested("audio")

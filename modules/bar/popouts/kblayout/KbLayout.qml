@@ -26,7 +26,7 @@ ColumnLayout {
     StyledText {
         Layout.topMargin: Tokens.padding.normal
         Layout.rightMargin: Tokens.padding.small
-        text: qsTr("Keyboard Layouts")
+        text: qsTr("Teclados")
         font.weight: 500
     }
 

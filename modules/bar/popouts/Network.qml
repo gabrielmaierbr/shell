@@ -28,14 +28,14 @@ ColumnLayout {
         Layout.preferredHeight: visible ? implicitHeight : 0
         Layout.topMargin: visible ? Tokens.padding.normal : 0
         Layout.rightMargin: Tokens.padding.small
-        text: qsTr("Wireless")
+        text: qsTr("WiFi")
         font.weight: 500
     }
 
     Toggle {
         visible: root.view === "wireless"
         Layout.preferredHeight: visible ? implicitHeight : 0
-        label: qsTr("Enabled")
+        label: qsTr("Ativado")
         checked: Nmcli.wifiEnabled
         toggle.onToggled: Nmcli.enableWifi(checked)
     }
@@ -45,7 +45,7 @@ ColumnLayout {
         Layout.preferredHeight: visible ? implicitHeight : 0
         Layout.topMargin: visible ? Tokens.spacing.small : 0
         Layout.rightMargin: Tokens.padding.small
-        text: qsTr("%1 networks available").arg(Nmcli.networks.length) // qmllint disable missing-property
+        text: qsTr("%1 redes disponíveis").arg(Nmcli.networks.length) // qmllint disable missing-property
         color: Colours.palette.m3onSurfaceVariant
         font.pointSize: Tokens.font.size.small
     }
@@ -196,7 +196,7 @@ ColumnLayout {
 
             StyledText {
                 Layout.topMargin: -Math.round(scanIcon.fontInfo.pointSize * 0.0575)
-                text: qsTr("Rescan networks")
+                text: qsTr("Procurar por redes")
                 color: Colours.palette.m3onPrimaryContainer
             }
 
@@ -220,7 +220,7 @@ ColumnLayout {
         Layout.preferredHeight: visible ? implicitHeight : 0
         Layout.topMargin: visible ? Tokens.padding.normal : 0
         Layout.rightMargin: Tokens.padding.small
-        text: qsTr("Ethernet")
+        text: qsTr("Cabeado")
         font.weight: 500
     }
 
@@ -229,7 +229,7 @@ ColumnLayout {
         Layout.preferredHeight: visible ? implicitHeight : 0
         Layout.topMargin: visible ? Tokens.spacing.small : 0
         Layout.rightMargin: Tokens.padding.small
-        text: qsTr("%1 devices available").arg(Nmcli.ethernetDevices.length)
+        text: qsTr("%1 dispositivos disponíveis").arg(Nmcli.ethernetDevices.length)
         color: Colours.palette.m3onSurfaceVariant
         font.pointSize: Tokens.font.size.small
     }

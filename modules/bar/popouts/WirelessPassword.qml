@@ -41,7 +41,7 @@ ColumnLayout {
                 connectButton.connecting = false;
                 connectButton.hasError = true;
                 connectButton.enabled = true;
-                connectButton.text = qsTr("Connect");
+                connectButton.text = qsTr("Conectar");
                 passwordContainer.passwordBuffer = "";
                 // Delete the failed connection
                 if (root.network && root.network.ssid) {
@@ -60,7 +60,7 @@ ColumnLayout {
         passwordContainer.passwordBuffer = "";
         connectButton.connecting = false;
         connectButton.hasError = false;
-        connectButton.text = qsTr("Connect");
+        connectButton.text = qsTr("Conectar");
         connectionMonitor.stop();
 
         // Return to network popout
@@ -182,7 +182,7 @@ ColumnLayout {
 
             StyledText {
                 Layout.alignment: Qt.AlignHCenter
-                text: qsTr("Enter password")
+                text: qsTr("Digite a senha")
                 font.pointSize: Tokens.font.size.large
                 font.weight: 500
             }
@@ -195,7 +195,7 @@ ColumnLayout {
                     if (root.network) {
                         const ssid = root.network.ssid;
                         if (ssid && ssid.length > 0) {
-                            return qsTr("Network: %1").arg(ssid);
+                            return qsTr("Rede: %1").arg(ssid);
                         }
                     }
                     return qsTr("Network: Unknown");
@@ -373,7 +373,7 @@ ColumnLayout {
                     id: placeholder
 
                     anchors.centerIn: parent
-                    text: qsTr("Password")
+                    text: qsTr("Senha")
                     color: Colours.palette.m3outline
                     font.pointSize: Tokens.font.size.normal
                     font.family: Tokens.font.family.mono
@@ -474,7 +474,7 @@ ColumnLayout {
                     Layout.minimumHeight: Tokens.font.size.normal + Tokens.padding.normal * 2
                     inactiveColour: Colours.palette.m3secondaryContainer
                     inactiveOnColour: Colours.palette.m3onSecondaryContainer
-                    text: qsTr("Cancel")
+                    text: qsTr("Cancelar")
 
                     onClicked: root.closeDialog()
                 }
@@ -489,7 +489,7 @@ ColumnLayout {
                     Layout.minimumHeight: Tokens.font.size.normal + Tokens.padding.normal * 2
                     inactiveColour: Colours.palette.m3primary
                     inactiveOnColour: Colours.palette.m3onPrimary
-                    text: qsTr("Connect")
+                    text: qsTr("Conectar")
                     enabled: passwordContainer.passwordBuffer.length > 0 && !connecting
 
                     onClicked: {

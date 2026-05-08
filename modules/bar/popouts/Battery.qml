@@ -13,7 +13,7 @@ Column {
     width: Tokens.sizes.bar.batteryWidth
 
     StyledText {
-        text: UPower.displayDevice.isLaptopBattery ? qsTr("Remaining: %1%").arg(Math.round(UPower.displayDevice.percentage * 100)) : qsTr("No battery detected")
+        text: UPower.displayDevice.isLaptopBattery ? qsTr("Remaining: %1%").arg(Math.round(UPower.displayDevice.percentage * 100)) : qsTr("Nenhuma bateria detectada")
     }
 
     StyledText {
@@ -33,7 +33,7 @@ Column {
             return comps.join(", ") || fallback;
         }
 
-        text: UPower.displayDevice.isLaptopBattery ? qsTr("Time %1: %2").arg(UPower.onBattery ? "remaining" : "until charged").arg(UPower.onBattery ? formatSeconds(UPower.displayDevice.timeToEmpty, "Calculating...") : formatSeconds(UPower.displayDevice.timeToFull, "Fully charged!")) : qsTr("Power profile: %1").arg(PowerProfile.toString(PowerProfiles.profile))
+        text: UPower.displayDevice.isLaptopBattery ? qsTr("Time %1: %2").arg(UPower.onBattery ? "Faltam" : "para carga completa").arg(UPower.onBattery ? formatSeconds(UPower.displayDevice.timeToEmpty, "Calculando...") : formatSeconds(UPower.displayDevice.timeToFull, "Fully charged!")) : qsTr("Perfil de Energia: %1").arg(PowerProfile.toString(PowerProfiles.profile))
     }
 
     Loader {
@@ -179,7 +179,7 @@ Column {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: Tokens.padding.small
-
+            
             profile: PowerProfile.Performance
             icon: "rocket_launch"
         }
