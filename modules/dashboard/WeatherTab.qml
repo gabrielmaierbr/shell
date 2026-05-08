@@ -50,14 +50,14 @@ Item {
 
                 WeatherStat {
                     icon: "wb_twilight"
-                    label: "Sunrise"
+                    label: "Nascer do Sol"
                     value: Weather.sunrise
                     colour: Colours.palette.m3tertiary
                 }
 
                 WeatherStat {
                     icon: "bedtime"
-                    label: "Sunset"
+                    label: "Pôr do Sol"
                     value: Weather.sunset
                     colour: Colours.palette.m3tertiary
                 }
@@ -112,19 +112,19 @@ Item {
 
             DetailCard {
                 icon: "water_drop"
-                label: "Humidity"
+                label: "Umidade"
                 value: Weather.humidity + "%"
                 colour: Colours.palette.m3secondary
             }
             DetailCard {
                 icon: "thermostat"
-                label: "Feels Like"
+                label: "Sensação térmica"
                 value: Weather.feelsLike
                 colour: Colours.palette.m3primary
             }
             DetailCard {
                 icon: "air"
-                label: "Wind"
+                label: "Velocidade do vento"
                 value: Weather.windSpeed ? Weather.windSpeed + " km/h" : "--"
                 colour: Colours.palette.m3tertiary
             }
@@ -169,7 +169,7 @@ Item {
 
                         StyledText {
                             Layout.alignment: Qt.AlignHCenter
-                            text: forecastItem.index === 0 ? qsTr("Today") : new Date(forecastItem.modelData.date).toLocaleDateString(Qt.locale(), "ddd")
+                            text: forecastItem.index === 0 ? qsTr("Hoje") : new Date(forecastItem.modelData.date).toLocaleDateString(Qt.locale(), "ddd")
                             font.pointSize: Tokens.font.size.normal
                             font.weight: 600
                             color: Colours.palette.m3primary

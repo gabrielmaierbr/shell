@@ -123,7 +123,7 @@ Item {
                     Layout.preferredHeight: 220
                     Layout.fillWidth: !Config.dashboard.performance.showStorage && !Config.dashboard.performance.showNetwork
                     icon: "memory_alt"
-                    title: qsTr("Memory")
+                    title: qsTr("Memória")
                     percentage: SystemUsage.memPerc
                     subtitle: {
                         const usedFmt = SystemUsage.formatKib(SystemUsage.memUsed);
@@ -573,7 +573,7 @@ Item {
             CardHeader {
                 icon: "hard_disk"
                 title: {
-                    const base = qsTr("Storage");
+                    const base = qsTr("Armaz.");
                     if (!storageGaugeCard.currentDisk)
                         return base;
 
@@ -664,7 +664,7 @@ Item {
 
             CardHeader {
                 icon: "swap_vert"
-                title: qsTr("Network")
+                title: qsTr("Rede de Internet")
                 accentColor: networkCard.accentColor
             }
 

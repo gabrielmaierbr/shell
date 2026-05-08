@@ -29,25 +29,25 @@ Item {
             {
                 component: dashComponent,
                 iconName: "dashboard",
-                text: qsTr("Dashboard"),
+                text: qsTr("Painel"),
                 enabled: Config.dashboard.showDashboard
             },
             {
                 component: mediaComponent,
                 iconName: "queue_music",
-                text: qsTr("Media"),
+                text: qsTr("Mídia"),
                 enabled: Config.dashboard.showMedia
             },
             {
                 component: performanceComponent,
                 iconName: "speed",
-                text: qsTr("Performance"),
+                text: qsTr("Desempenho"),
                 enabled: Config.dashboard.showPerformance && (Config.dashboard.performance.showCpu || Config.dashboard.performance.showGpu || Config.dashboard.performance.showMemory || Config.dashboard.performance.showStorage || Config.dashboard.performance.showNetwork || Config.dashboard.performance.showBattery)
             },
             {
                 component: weatherComponent,
                 iconName: "cloud",
-                text: qsTr("Weather"),
+                text: qsTr("Tempo"),
                 enabled: Config.dashboard.showWeather
             }
         ];
