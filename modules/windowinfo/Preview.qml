@@ -49,7 +49,7 @@ Item {
 
                 StyledText {
                     Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("No active client")
+                    text: qsTr("Sem janela ativa")
                     color: Colours.palette.m3outline
                     font.pointSize: Tokens.font.size.extraLarge
                     font.weight: 500
@@ -57,7 +57,7 @@ Item {
 
                 StyledText {
                     Layout.alignment: Qt.AlignHCenter
-                    text: qsTr("Try switching to a window")
+                    text: qsTr("Tente trocar para uma janela")
                     color: Colours.palette.m3outline
                     font.pointSize: Tokens.font.size.large
                 }
@@ -88,10 +88,10 @@ Item {
         text: {
             const client = root.client;
             if (!client)
-                return qsTr("No active client");
+                return qsTr("Sem janela ativa");
 
             const mon = client.monitor;
-            return qsTr("%1 on monitor %2 at %3, %4").arg(client.title).arg(mon.name).arg(client.lastIpcObject.at[0]).arg(client.lastIpcObject.at[1]);
+            return qsTr("%1 no monitor %2 em %3, %4").arg(client.title).arg(mon.name).arg(client.lastIpcObject.at[0]).arg(client.lastIpcObject.at[1]);
         }
     }
 }

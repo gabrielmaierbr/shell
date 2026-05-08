@@ -78,7 +78,7 @@ Item {
             topPadding: Tokens.padding.larger
             bottomPadding: Tokens.padding.larger
 
-            placeholderText: qsTr("Type \"%1\" for commands").arg(GlobalConfig.launcher.actionPrefix)
+            placeholderText: qsTr("Digite \"%1\" para comandos").arg(GlobalConfig.launcher.actionPrefix)
 
             onAccepted: {
                 const currentItem = list.currentList?.currentItem;

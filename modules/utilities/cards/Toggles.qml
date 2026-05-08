@@ -51,7 +51,7 @@ StyledRect {
         spacing: Tokens.spacing.normal
 
         StyledText {
-            text: qsTr("Quick Toggles")
+            text: qsTr("Botões rápidos")
             font.pointSize: Tokens.font.size.normal
         }
 

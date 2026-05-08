@@ -27,7 +27,7 @@ ColumnLayout {
         visible: active
 
         sourceComponent: StyledText {
-            text: qsTr("Weather")
+            text: qsTr("Tempo")
             color: Colours.palette.m3primary
             font.pointSize: Tokens.font.size.extraLarge
             font.weight: 500
@@ -63,7 +63,7 @@ ColumnLayout {
                 Layout.fillWidth: true
 
                 animate: true
-                text: qsTr("Humidity: %1%").arg(Weather.humidity)
+                text: qsTr("Umidade: %1%").arg(Weather.humidity)
                 color: Colours.palette.m3onSurfaceVariant
                 font.pointSize: Tokens.font.size.normal
                 elide: Text.ElideRight
@@ -95,7 +95,7 @@ ColumnLayout {
                     Layout.fillWidth: true
 
                     animate: true
-                    text: qsTr("Feels like: %1").arg(Weather.feelsLike)
+                    text: qsTr("Sensação térmica: %1").arg(Weather.feelsLike)
                     color: Colours.palette.m3outline
                     horizontalAlignment: Text.AlignRight
                     font.pointSize: Tokens.font.size.smaller

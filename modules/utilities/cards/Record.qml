@@ -58,14 +58,14 @@ StyledRect {
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: qsTr("Screen Recorder")
+                    text: qsTr("Gravador de Tela")
                     font.pointSize: Tokens.font.size.normal
                     elide: Text.ElideRight
                 }
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Recorder.paused ? qsTr("Recording paused") : Recorder.running ? qsTr("Recording running") : qsTr("Recording off")
+                    text: Recorder.paused ? qsTr("Gravação pausada") : Recorder.running ? qsTr("Gravação em andamento") : qsTr("Gravação encerrada")
                     color: Colours.palette.m3onSurfaceVariant
                     font.pointSize: Tokens.font.size.small
                     elide: Text.ElideRight
@@ -80,26 +80,26 @@ StyledRect {
                 menuItems: [
                     MenuItem {
                         icon: "fullscreen"
-                        text: qsTr("Record fullscreen")
-                        activeText: qsTr("Fullscreen")
+                        text: qsTr("Gravar Tela inteira")
+                        activeText: qsTr("Tela inteira")
                         onClicked: Recorder.start()
                     },
                     MenuItem {
                         icon: "screenshot_region"
-                        text: qsTr("Record region")
-                        activeText: qsTr("Region")
+                        text: qsTr("Gravar região da Tela")
+                        activeText: qsTr("Região")
                         onClicked: Recorder.start(["-r"])
                     },
                     MenuItem {
                         icon: "select_to_speak"
-                        text: qsTr("Record fullscreen with sound")
-                        activeText: qsTr("Fullscreen")
+                        text: qsTr("Gravar Tela inteira com áudio")
+                        activeText: qsTr("Tela inteira")
                         onClicked: Recorder.start(["-s"])
                     },
                     MenuItem {
                         icon: "volume_up"
-                        text: qsTr("Record region with sound")
-                        activeText: qsTr("Region")
+                        text: qsTr("Gravar região da Tela com áudio")
+                        activeText: qsTr("Região")
                         onClicked: Recorder.start(["-sr"])
                     }
                 ]
@@ -244,7 +244,7 @@ StyledRect {
                     else
                         time = `${mins}:${secs}`;
 
-                    return qsTr("Recording for %1").arg(time);
+                    return qsTr("Gravando por %1").arg(time);
                 }
                 font.pointSize: Tokens.font.size.normal
             }

@@ -25,7 +25,7 @@ ColumnLayout {
 
         StyledText {
             Layout.fillWidth: true
-            text: qsTr("Move to workspace")
+            text: qsTr("Mover para Workspace")
             elide: Text.ElideRight
         }
 
@@ -108,7 +108,7 @@ ColumnLayout {
         Button {
             color: Colours.palette.m3secondaryContainer
             onColor: Colours.palette.m3onSecondaryContainer
-            text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Float")
+            text: root.client?.lastIpcObject.floating ? qsTr("Tile") : qsTr("Flutuante")
             onClicked: Hypr.dispatch(`togglefloating address:0x${root.client?.address}`)
         }
 
@@ -122,7 +122,7 @@ ColumnLayout {
             sourceComponent: Button {
                 color: Colours.palette.m3secondaryContainer
                 onColor: Colours.palette.m3onSecondaryContainer
-                text: root.client?.lastIpcObject.pinned ? qsTr("Unpin") : qsTr("Pin")
+                text: root.client?.lastIpcObject.pinned ? qsTr("Desfixar") : qsTr("Fixar")
                 onClicked: Hypr.dispatch(`pin address:0x${root.client?.address}`)
             }
         }
@@ -130,7 +130,7 @@ ColumnLayout {
         Button {
             color: Colours.palette.m3errorContainer
             onColor: Colours.palette.m3onErrorContainer
-            text: qsTr("Kill")
+            text: qsTr("Encerrar")
             onClicked: Hypr.dispatch(`killwindow address:0x${root.client?.address}`)
         }
     }

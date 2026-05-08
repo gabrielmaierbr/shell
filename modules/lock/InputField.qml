@@ -41,10 +41,10 @@ Item {
 
         text: {
             if (root.pam.passwd.active)
-                return qsTr("Loading...");
+                return qsTr("Carregando...");
             if (root.pam.state === "max")
-                return qsTr("You have reached the maximum number of tries");
-            return qsTr("Enter your password");
+                return qsTr("Você chegou no número máximo de tentativas");
+            return qsTr("Digite sua senha");
         }
 
         animate: true

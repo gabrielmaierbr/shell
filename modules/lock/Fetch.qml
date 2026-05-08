@@ -99,7 +99,7 @@ ColumnLayout {
                 active: !batLoader.active || root.height > 110
 
                 sourceComponent: FetchText {
-                    text: `USER: ${SysInfo.user}`
+                    text: `USUÁRIO: ${SysInfo.user}`
                 }
             }
 

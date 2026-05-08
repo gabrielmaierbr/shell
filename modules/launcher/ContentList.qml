@@ -128,14 +128,14 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             StyledText {
-                text: root.state === "wallpapers" ? qsTr("No wallpapers found") : qsTr("No results")
+                text: root.state === "wallpapers" ? qsTr("Nenhum Wallpaper encontrado") : qsTr("Sem resultados")
                 color: Colours.palette.m3onSurfaceVariant
                 font.pointSize: Tokens.font.size.larger
                 font.weight: 500
             }
 
             StyledText {
-                text: root.state === "wallpapers" && Wallpapers.list.length === 0 ? qsTr("Try putting some wallpapers in %1").arg(Paths.shortenHome(Paths.wallsdir)) : qsTr("Try searching for something else")
+                text: root.state === "wallpapers" && Wallpapers.list.length === 0 ? qsTr("Coloque alguns Wallpapers em %1").arg(Paths.shortenHome(Paths.wallsdir)) : qsTr("Tente procurar por outra coisa")
                 color: Colours.palette.m3onSurfaceVariant
                 font.pointSize: Tokens.font.size.normal
             }
