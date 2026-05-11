@@ -43,14 +43,14 @@ Item {
 
             StyledText {
                 Layout.alignment: Qt.AlignHCenter
-                text: qsTr("No widgets enabled")
+                text: qsTr("Widgets desabilitados")
                 font.pointSize: Tokens.font.size.large
                 color: Colours.palette.m3onSurface
             }
 
             StyledText {
                 Layout.alignment: Qt.AlignHCenter
-                text: qsTr("Enable widgets in dashboard settings")
+                text: qsTr("Ative os widgets no Dashboard")
                 font.pointSize: Tokens.font.size.small
                 color: Colours.palette.m3onSurfaceVariant
             }
@@ -88,7 +88,7 @@ Item {
                     icon: "memory"
                     title: SystemUsage.cpuName ? `CPU - ${SystemUsage.cpuName}` : qsTr("CPU")
                     mainValue: `${Math.round(SystemUsage.cpuPerc * 100)}%`
-                    mainLabel: qsTr("Usage")
+                    mainLabel: qsTr("Uso")
                     secondaryValue: root.displayTemp(SystemUsage.cpuTemp)
                     secondaryLabel: qsTr("Temp")
                     usage: SystemUsage.cpuPerc
@@ -104,7 +104,7 @@ Item {
                     icon: "desktop_windows"
                     title: SystemUsage.gpuName ? `GPU - ${SystemUsage.gpuName}` : qsTr("GPU")
                     mainValue: `${Math.round(SystemUsage.gpuPerc * 100)}%`
-                    mainLabel: qsTr("Usage")
+                    mainLabel: qsTr("Uso")
                     secondaryValue: root.displayTemp(SystemUsage.gpuTemp)
                     secondaryLabel: qsTr("Temp")
                     usage: SystemUsage.gpuPerc
@@ -220,7 +220,7 @@ Item {
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: qsTr("Battery")
+                    text: qsTr("Bateria")
                     font.pointSize: Tokens.font.size.normal
                     color: Colours.palette.m3onSurface
                 }
@@ -247,10 +247,10 @@ Item {
                     Layout.alignment: Qt.AlignRight
                     text: {
                         if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged)
-                            return qsTr("Full");
+                            return qsTr("Cheia");
 
                         if (batteryTank.isCharging)
-                            return qsTr("Charging");
+                            return qsTr("Carregando");
 
                         const s = UPower.displayDevice.timeToEmpty;
                         if (s === 0)
@@ -589,7 +589,7 @@ Item {
                     visible: storageGaugeCard.diskCount > 1
                     opacity: 0.7
                     ToolTip.visible: hintHover.hovered
-                    ToolTip.text: qsTr("Scroll to switch disks")
+                    ToolTip.text: qsTr("Scrolle para trocar o dispositivo")
                     ToolTip.delay: 500
 
                     HoverHandler {
@@ -718,7 +718,7 @@ Item {
                 // "No data" placeholder
                 StyledText {
                     anchors.centerIn: parent
-                    text: qsTr("Collecting data...")
+                    text: qsTr("Coletando dados...")
                     font.pointSize: Tokens.font.size.small
                     color: Colours.palette.m3onSurfaceVariant
                     visible: NetworkUsage.downloadBuffer.count < 2

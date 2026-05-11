@@ -13,6 +13,7 @@ Row {
     required property DrawerVisibilities visibilities
     required property FileDialog facePicker
 
+    anchors.centerIn: parent
     padding: Tokens.padding.large
     spacing: Tokens.spacing.normal
 

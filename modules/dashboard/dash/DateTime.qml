@@ -9,19 +9,14 @@ import qs.services
 Item {
     id: root
 
-    anchors.top: parent.top
-    anchors.bottom: parent.bottom
+    anchors.fill: parent
     implicitWidth: Tokens.sizes.dashboard.dateTimeWidth
 
-    ColumnLayout {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: 0
+    RowLayout {
+        anchors.centerIn: parent
+        spacing: Tokens.spacing.small
 
         StyledText {
-            Layout.bottomMargin: -(font.pointSize * 0.4)
-            Layout.alignment: Qt.AlignHCenter
             text: Time.hourStr
             color: Colours.palette.m3secondary
             font.pointSize: Tokens.font.size.extraLarge
@@ -30,16 +25,14 @@ Item {
         }
 
         StyledText {
-            Layout.alignment: Qt.AlignHCenter
-            text: "•••"
+            text: ":"
             color: Colours.palette.m3primary
             font.pointSize: Tokens.font.size.extraLarge * 0.9
             font.family: Tokens.font.family.clock
+            font.weight: 600
         }
 
         StyledText {
-            Layout.topMargin: -(font.pointSize * 0.4)
-            Layout.alignment: Qt.AlignHCenter
             text: Time.minuteStr
             color: Colours.palette.m3secondary
             font.pointSize: Tokens.font.size.extraLarge
@@ -49,7 +42,7 @@ Item {
 
         Loader {
             asynchronous: true
-            Layout.alignment: Qt.AlignHCenter
+            Layout.leftMargin: Tokens.spacing.small
 
             active: GlobalConfig.services.useTwelveHourClock
             visible: active

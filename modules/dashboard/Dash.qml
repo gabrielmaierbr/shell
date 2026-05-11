@@ -5,95 +5,151 @@ import qs.components
 import qs.components.filedialog
 import qs.services
 
-GridLayout {
+ColumnLayout {
     id: root
 
     required property DrawerVisibilities visibilities
     required property DashboardState dashState
     required property FileDialog facePicker
 
-    rowSpacing: Tokens.spacing.normal
-    columnSpacing: Tokens.spacing.normal
+    readonly property int topCardHeight: 176
+    readonly property int midRowHeight: 230
+    readonly property int perfCardHeight: 200
+    readonly property real weatherMinWidth: Tokens.sizes.dashboard.weatherWidth + Tokens.sizes.dashboard.dateTimeWidth + Tokens.spacing.normal
 
-    Rect {
-        Layout.column: 2
-        Layout.columnSpan: 3
-        Layout.preferredWidth: user.implicitWidth
-        Layout.preferredHeight: user.implicitHeight
+    spacing: Tokens.spacing.normal
+    implicitWidth: Math.max(topRow.implicitWidth, bottomRow.implicitWidth, perfRow.implicitWidth)
+    implicitHeight: topRow.implicitHeight + bottomRow.implicitHeight + perfRow.implicitHeight + spacing * 2
 
-        radius: Tokens.rounding.large
+    RowLayout {
+        id: topRow
 
-        User {
-            id: user
-
-            visibilities: root.visibilities
-            facePicker: root.facePicker
-        }
-    }
-
-    Rect {
-        Layout.row: 0
-        Layout.columnSpan: 2
-        Layout.preferredWidth: Tokens.sizes.dashboard.weatherWidth
-        Layout.fillHeight: true
-
-        radius: Tokens.rounding.large * 1.5
-
-        SmallWeather {}
-    }
-
-    Rect {
-        Layout.row: 1
-        Layout.preferredWidth: dateTime.implicitWidth
-        Layout.fillHeight: true
-
-        radius: Tokens.rounding.normal
-
-        DateTime {
-            id: dateTime
-        }
-    }
-
-    Rect {
-        Layout.row: 1
-        Layout.column: 1
-        Layout.columnSpan: 3
         Layout.fillWidth: true
-        Layout.preferredHeight: calendar.implicitHeight
+        spacing: Tokens.spacing.normal
 
-        radius: Tokens.rounding.large
+        Rect {
+            Layout.preferredWidth: user.implicitWidth + Tokens.padding.large * 2
+            Layout.preferredHeight: root.topCardHeight
 
-        Calendar {
-            id: calendar
+            radius: Tokens.rounding.large
 
-            dashState: root.dashState
+            User {
+                id: user
+
+                anchors.centerIn: parent
+                visibilities: root.visibilities
+                facePicker: root.facePicker
+            }
+        }
+
+        Rect {
+            Layout.fillWidth: true
+            Layout.minimumWidth: root.weatherMinWidth
+            Layout.preferredHeight: root.topCardHeight
+            
+
+            radius: Tokens.rounding.large * 1.2
+
+            SmallWeather {
+            }
+        }
+
+        Rect {
+            Layout.preferredWidth: dashQuick.implicitWidth + Tokens.padding.normal * 2
+            Layout.preferredHeight: root.topCardHeight
+
+            radius: Tokens.rounding.large
+
+            DashboardQuickToggles {
+                id: dashQuick
+
+                anchors.centerIn: parent
+            }
+        }
+
+        Rect {
+            Layout.preferredWidth: Math.max(200, dateTime.implicitWidth + Tokens.padding.large * 2)
+            Layout.preferredHeight: root.topCardHeight
+
+            radius: Tokens.rounding.large
+
+            DateTime {
+                id: dateTime
+            }
         }
     }
 
-    Rect {
-        Layout.row: 1
-        Layout.column: 4
-        Layout.preferredWidth: resources.implicitWidth
-        Layout.fillHeight: true
+    RowLayout {
+        id: bottomRow
 
-        radius: Tokens.rounding.normal
+        Layout.fillWidth: true
+        spacing: Tokens.spacing.normal
 
-        Resources {
-            id: resources
+        Rect {
+            Layout.fillWidth: true
+            Layout.minimumWidth: 280
+            Layout.preferredHeight: root.midRowHeight
+
+            radius: Tokens.rounding.large
+
+            MediaMinimal {}
+        }
+
+        Rect {
+            Layout.preferredWidth: 320
+            Layout.preferredHeight: root.midRowHeight
+
+            radius: Tokens.rounding.large
+
+            Resources {
+                id: resources
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
+            }
+        }
+
+        Rect {
+            Layout.fillWidth: true
+            Layout.minimumWidth: 160
+            Layout.preferredHeight: root.midRowHeight
+
+            radius: Tokens.rounding.large
+
+            DashboardNetworkCard {
+                id: dashNetwork
+
+                anchors.fill: parent
+            }
         }
     }
 
-    Rect {
-        Layout.row: 0
-        Layout.column: 5
-        Layout.rowSpan: 2
-        Layout.preferredWidth: media.implicitWidth
-        Layout.fillHeight: true
+    RowLayout {
+        id: perfRow
 
-        radius: Tokens.rounding.large * 2
+        Layout.fillWidth: true
+        Layout.preferredHeight: root.perfCardHeight
+        spacing: Tokens.spacing.normal
 
-        Media {
-            id: media
+        Rect {
+            Layout.fillWidth: true
+            Layout.preferredHeight: root.perfCardHeight
+            radius: Tokens.rounding.large
+
+            CpuPerformanceCard {
+                anchors.fill: parent
+            }
+        }
+
+        Rect {
+            Layout.fillWidth: true
+            Layout.preferredHeight: root.perfCardHeight
+            visible: SystemUsage.gpuType !== "NONE"
+            radius: Tokens.rounding.large
+
+            GpuPerformanceCard {
+                anchors.fill: parent
+            }
         }
     }
 

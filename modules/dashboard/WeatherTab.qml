@@ -134,7 +134,7 @@ Item {
             Layout.topMargin: Tokens.spacing.normal
             Layout.leftMargin: Tokens.padding.normal
             visible: forecastRepeater.count > 0
-            text: qsTr("7-Day Forecast")
+            text: qsTr("Previsão de 7 dias")
             font.pointSize: Tokens.font.size.normal
             font.weight: 600
             color: Colours.palette.m3onSurface

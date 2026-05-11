@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Caelestia.Config
 import qs.components
 import qs.services
@@ -6,51 +7,77 @@ import qs.services
 Item {
     id: root
 
-    anchors.centerIn: parent
-
-    implicitWidth: icon.implicitWidth + info.implicitWidth + info.anchors.leftMargin
+    anchors.fill: parent
+    anchors.margins: Tokens.padding.large
 
     Component.onCompleted: Weather.reload()
 
-    MaterialIcon {
-        id: icon
+    RowLayout {
+        anchors.fill: parent
 
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
-
-        animate: true
-        text: Weather.icon
-        color: Colours.palette.m3secondary
-        font.pointSize: Tokens.font.size.extraLarge * 2
-    }
-
-    Column {
-        id: info
-
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: icon.right
-        anchors.leftMargin: Tokens.spacing.large
-
-        spacing: Tokens.spacing.small
-
-        StyledText {
-            anchors.horizontalCenter: parent.horizontalCenter
-
-            animate: true
-            text: Weather.temp
-            color: Colours.palette.m3primary
-            font.pointSize: Tokens.font.size.extraLarge
-            font.weight: 500
+        Item {
+            Layout.fillWidth: true
         }
 
-        StyledText {
-            anchors.horizontalCenter: parent.horizontalCenter
+        Row {
+            id: row
 
-            animate: true
-            text: Weather.description
+            Layout.alignment: Qt.AlignVCenter
+            spacing: Tokens.spacing.large
 
-            elide: Text.ElideRight
-            width: Math.min(implicitWidth, root.parent.width - icon.implicitWidth - info.anchors.leftMargin - Tokens.padding.large * 2)
+            MaterialIcon {
+                id: icon
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                animate: true
+                text: Weather.icon
+                color: Colours.palette.m3secondary
+                font.pointSize: Tokens.font.size.extraLarge * 2
+            }
+
+            Column {
+                id: info
+
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: Tokens.spacing.small
+
+                StyledText {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    animate: true
+                    text: Weather.temp
+                    color: Colours.palette.m3primary
+                    font.pointSize: Tokens.font.size.extraLarge * 1.08
+                    font.weight: 500
+                }
+
+                StyledText {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    animate: true
+                    text: Weather.description
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pointSize: Tokens.font.size.normal
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
+                    width: Math.min(implicitWidth, root.width - root.anchors.margins * 2 - row.spacing - icon.width)
+                }
+
+                StyledText {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    animate: true
+                    text: Weather.city || qsTr("Cidade desconhecida")
+                    horizontalAlignment: Text.AlignHCenter
+                    color: Colours.palette.m3onSurfaceVariant
+                    font.pointSize: Tokens.font.size.small
+                    elide: Text.ElideRight
+                    width: Math.min(implicitWidth, root.width - root.anchors.margins * 2 - row.spacing - icon.width)
+                }
+            }
+        }
+
+        Item {
+            Layout.fillWidth: true
         }
     }
 }

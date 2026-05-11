@@ -43,12 +43,6 @@ Item {
                 iconName: "speed",
                 text: qsTr("Desempenho"),
                 enabled: Config.dashboard.showPerformance && (Config.dashboard.performance.showCpu || Config.dashboard.performance.showGpu || Config.dashboard.performance.showMemory || Config.dashboard.performance.showStorage || Config.dashboard.performance.showNetwork || Config.dashboard.performance.showBattery)
-            },
-            {
-                component: weatherComponent,
-                iconName: "cloud",
-                text: qsTr("Tempo"),
-                enabled: Config.dashboard.showWeather
             }
         ];
         return allTabs.filter(tab => tab.enabled);
@@ -59,6 +53,14 @@ Item {
 
     implicitWidth: nonAnimWidth
     implicitHeight: nonAnimHeight
+
+    function clampDashboardTab(): void {
+        const n = tabs.count;
+        if (n > 0 && dashState.currentTab >= n)
+            dashState.currentTab = n - 1;
+    }
+
+    Component.onCompleted: Qt.callLater(() => clampDashboardTab())
 
     Tabs {
         id: tabs
@@ -72,6 +74,8 @@ Item {
         nonAnimWidth: root.nonAnimWidth - anchors.margins * 2
         dashState: root.dashState
         tabs: root.dashboardTabs
+
+        onCountChanged: Qt.callLater(() => root.clampDashboardTab())
     }
 
     ClippingRectangle {
@@ -183,12 +187,6 @@ Item {
                 id: performanceComponent
 
                 Performance {}
-            }
-
-            Component {
-                id: weatherComponent
-
-                WeatherTab {}
             }
 
             Behavior on contentX {
