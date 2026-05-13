@@ -14,7 +14,7 @@ ColumnLayout {
 
     readonly property int topCardHeight: 176
     readonly property int midRowHeight: 230
-    readonly property int perfCardHeight: 200
+    readonly property int perfCardHeight: 250
     readonly property real weatherMinWidth: Tokens.sizes.dashboard.weatherWidth + Tokens.sizes.dashboard.dateTimeWidth + Tokens.spacing.normal
 
     spacing: Tokens.spacing.normal
@@ -95,32 +95,10 @@ ColumnLayout {
             MediaMinimal {}
         }
 
-        Rect {
+        DashboardRecordCard {
             Layout.preferredWidth: 320
             Layout.preferredHeight: root.midRowHeight
-
-            radius: Tokens.rounding.large
-
-            Resources {
-                id: resources
-                anchors.centerIn: parent
-                width: parent.width
-                height: parent.height
-            }
-        }
-
-        Rect {
-            Layout.fillWidth: true
-            Layout.minimumWidth: 160
-            Layout.preferredHeight: root.midRowHeight
-
-            radius: Tokens.rounding.large
-
-            DashboardNetworkCard {
-                id: dashNetwork
-
-                anchors.fill: parent
-            }
+            visibilities: root.visibilities
         }
     }
 
@@ -149,6 +127,19 @@ ColumnLayout {
 
             GpuPerformanceCard {
                 anchors.fill: parent
+            }
+        }
+
+        Rect {
+            Layout.preferredWidth: 320
+            Layout.preferredHeight: root.perfCardHeight
+            radius: Tokens.rounding.large
+
+            Resources {
+                id: resources
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
             }
         }
     }

@@ -154,17 +154,6 @@ Item {
 
                 PanelPlayerControl {
                     type: IconButton.Text
-                    icon: root.active?.shuffle ? "shuffle_on" : "shuffle"
-                    font.pointSize: root.ctrlFont
-                    disabled: !root.active?.shuffleSupported
-                    onClicked: {
-                        if (root.active)
-                            root.active.shuffle = !root.active.shuffle;
-                    }
-                }
-
-                PanelPlayerControl {
-                    type: IconButton.Text
                     icon: "skip_previous"
                     font.pointSize: root.ctrlFontLarge
                     disabled: !root.active?.canGoPrevious
@@ -188,13 +177,6 @@ Item {
                     font.pointSize: root.ctrlFontLarge
                     disabled: !root.active?.canGoNext
                     onClicked: root.active?.next()
-                }
-
-                PanelPlayerControl {
-                    type: IconButton.Text
-                    icon: "lyrics"
-                    font.pointSize: root.ctrlFont
-                    onClicked: LyricsService.toggleVisibility()
                 }
             }
         }

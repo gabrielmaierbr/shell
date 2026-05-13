@@ -16,7 +16,7 @@ Item {
         anchors.fill: parent
         anchors.margins: Tokens.padding.large
         icon: "memory"
-        title: SystemUsage.cpuName ? `CPU - ${SystemUsage.cpuName}` : qsTr("CPU")
+        title: SystemUsage.cpuName || qsTr("CPU")
         usage: SystemUsage.cpuPerc
         temperature: SystemUsage.cpuTemp
         accentColor: Colours.palette.m3primary

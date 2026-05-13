@@ -39,10 +39,10 @@ Item {
                 enabled: Config.dashboard.showMedia
             },
             {
-                component: performanceComponent,
-                iconName: "speed",
-                text: qsTr("Desempenho"),
-                enabled: Config.dashboard.showPerformance && (Config.dashboard.performance.showCpu || Config.dashboard.performance.showGpu || Config.dashboard.performance.showMemory || Config.dashboard.performance.showStorage || Config.dashboard.performance.showNetwork || Config.dashboard.performance.showBattery)
+                component: mixerComponent,
+                iconName: "equalizer",
+                text: qsTr("Mixer"),
+                enabled: true
             }
         ];
         return allTabs.filter(tab => tab.enabled);
@@ -184,9 +184,9 @@ Item {
             }
 
             Component {
-                id: performanceComponent
+                id: mixerComponent
 
-                Performance {}
+                Mixer {}
             }
 
             Behavior on contentX {

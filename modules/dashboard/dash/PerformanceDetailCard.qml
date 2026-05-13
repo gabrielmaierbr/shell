@@ -28,8 +28,8 @@ StyledRect {
     onTempProgressChanged: tempAnimated = tempProgress
 
     ColumnLayout {
-        anchors.fill: parent
-        anchors.margins: Tokens.padding.large
+        anchors.centerIn: parent
+        width: parent.width - Tokens.padding.large * 2
         spacing: Tokens.spacing.small
 
         RowLayout {
@@ -52,7 +52,7 @@ StyledRect {
             StyledText {
                 text: `${Math.round(card.usage * 100)}%`
                 color: card.accentColor
-                font.pointSize: Tokens.font.size.large
+                font.pointSize: Tokens.font.size.normal
                 font.weight: Font.Medium
             }
         }
@@ -72,6 +72,8 @@ StyledRect {
                 color: card.accentColor
             }
         }
+
+        Item { Layout.preferredHeight: Tokens.padding.large }
 
         RowLayout {
             Layout.fillWidth: true

@@ -15,12 +15,32 @@ Item {
         service: SystemUsage
     }
 
-    readonly property var primaryDisk: SystemUsage.disks.length > 0 ? SystemUsage.disks[0] : null
+    readonly property var disk0: {
+        for (let i = 0; i < SystemUsage.disks.length; i++) {
+            const d = SystemUsage.disks[i];
+            if (d.device && d.device.indexOf("nvme0n1") !== -1) return d;
+        }
+        return SystemUsage.disks.length > 0 ? SystemUsage.disks[0] : null;
+    }
+
+    readonly property var disk1: {
+        for (let i = 0; i < SystemUsage.disks.length; i++) {
+            const d = SystemUsage.disks[i];
+            if (d.device && d.device.indexOf("nvme1n1") !== -1) return d;
+        }
+        return SystemUsage.disks.length > 1 ? SystemUsage.disks[1] : null;
+    }
 
     function formatPair(used: real, free: real): string {
         const usedFmt = SystemUsage.formatKib(used);
         const freeFmt = SystemUsage.formatKib(free);
         return `${usedFmt.value.toFixed(1)} ${usedFmt.unit} ${qsTr("usado")} · ${freeFmt.value.toFixed(1)} ${freeFmt.unit} ${qsTr("livre")}`;
+    }
+
+    function diskPerc(disk: var): real {
+        if (!disk) return 0;
+        const total = disk.used + disk.free;
+        return total > 0 ? disk.used / total : 0;
     }
 
     Column {
@@ -38,10 +58,19 @@ Item {
 
         ResourceLine {
             icon: "hard_disk"
-            name: qsTr("Disco")
-            value: SystemUsage.storagePerc
+            name: qsTr("nvme0n1")
+            value: root.diskPerc(root.disk0)
             colour: Colours.palette.m3tertiary
-            detail: root.primaryDisk ? root.formatPair(root.primaryDisk.used, root.primaryDisk.free) : qsTr("Coletando dados...")
+            detail: root.disk0 ? root.formatPair(root.disk0.used, root.disk0.free) : qsTr("Coletando dados...")
+        }
+
+        ResourceLine {
+            icon: "hard_disk"
+            name: qsTr("nvme1n1")
+            value: root.diskPerc(root.disk1)
+            colour: Colours.palette.m3primary
+            detail: root.disk1 ? root.formatPair(root.disk1.used, root.disk1.free) : qsTr("Não disponível")
+            visible: root.disk1 !== null
         }
     }
 
@@ -55,7 +84,7 @@ Item {
         required property string detail
         property real animatedValue: 0
 
-        implicitHeight: 72
+        implicitHeight: 64
         implicitWidth: parent ? parent.width : 320
         Component.onCompleted: animatedValue = value
         onValueChanged: animatedValue = value

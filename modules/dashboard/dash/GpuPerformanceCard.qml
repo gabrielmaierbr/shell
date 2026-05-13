@@ -17,7 +17,7 @@ Item {
         anchors.fill: parent
         anchors.margins: Tokens.padding.large
         icon: "desktop_windows"
-        title: SystemUsage.gpuName ? `GPU - ${SystemUsage.gpuName}` : qsTr("GPU")
+        title: SystemUsage.gpuName || qsTr("GPU")
         usage: SystemUsage.gpuPerc
         temperature: SystemUsage.gpuTemp
         accentColor: Colours.palette.m3secondary
